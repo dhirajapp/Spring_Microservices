@@ -19,6 +19,10 @@ public class CurrencyExchane {
 	private BigDecimal conversionMultiple;
 	private String environment;
 
+	public CurrencyExchane() {
+		super();
+	}
+	
 	public CurrencyExchane(long id, String from, String to, BigDecimal conversionMultiple) {
 		super();
 		this.id = id;
