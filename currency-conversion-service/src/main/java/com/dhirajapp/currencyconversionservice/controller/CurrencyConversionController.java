@@ -14,8 +14,8 @@ import com.dhirajapp.currencyconversionservice.bean.CurrencyConversion;
 
 @RestController
 public class CurrencyConversionController {
-	@Autowired
-	private CurrencyExchangeProxy proxy;
+	//@Autowired
+	//private CurrencyExchangeProxy proxy;
    @GetMapping("/currency-conversion/from/{from}/to/{to}/quantity/{quantity}")
 	public CurrencyConversion calculateCurrencyConversion(@PathVariable String from,@PathVariable String to,@PathVariable BigDecimal quantity) {
 		
@@ -29,13 +29,20 @@ public class CurrencyConversionController {
 	}
 
    
+   // another way to communicate services to services using feign client 
    
-   @GetMapping("/currency-conversion-feign/from/{from}/to/{to}/quantity/{quantity}")
-	public CurrencyConversion calculateCurrencyConversionFeign(@PathVariable String from,@PathVariable String to,@PathVariable BigDecimal quantity) {
-		
-	    CurrencyConversion currencyConversion=proxy.reteriveExchangeValueFeign(from, to);
-	return new CurrencyConversion(currencyConversion.getId(),currencyConversion.getFrom(),currencyConversion.getTo(),quantity,currencyConversion.getConversionMultiple(),quantity.multiply(currencyConversion.getConversionMultiple()),currencyConversion.getEnvironment());
-	}
-   
+	/*
+	 * @GetMapping(
+	 * "/currency-conversion-feign/from/{from}/to/{to}/quantity/{quantity}") public
+	 * CurrencyConversion calculateCurrencyConversionFeign(@PathVariable String
+	 * from,@PathVariable String to,@PathVariable BigDecimal quantity) {
+	 * 
+	 * CurrencyConversion currencyConversion=proxy.reteriveExchangeValueFeign(from,
+	 * to); return new
+	 * CurrencyConversion(currencyConversion.getId(),currencyConversion.getFrom(),
+	 * currencyConversion.getTo(),quantity,currencyConversion.getConversionMultiple(
+	 * ),quantity.multiply(currencyConversion.getConversionMultiple()),
+	 * currencyConversion.getEnvironment()); }
+	 */
    
 }
